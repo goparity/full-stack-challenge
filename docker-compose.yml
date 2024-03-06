@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  fe-challenge:
+    container_name: fe-challenge
+    build:
+      context: ./fe-challenge
+    ports:
+      - "8080:8080"
+    volumes:
+       - ./fe-challenge:/usr/src/app/fe-challenge
+       - /usr/src/app/fe-challenge/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
