@@ -1,13 +1,41 @@
 version: '3.1'
 services:
-  fe-challenge:
-    container_name: fe-challenge
+  mysql:
+      image: mysql:5.7
+      platform: linux/amd64
+      container_name: mysql
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: forge
+        MYSQL_USER: forge
+        MYSQL_PASSWORD: password
+      command: --max_allowed_packet=1073741824
+      volumes:
+        - full-stack-challenge-data:/var/lib/mysql
+      ports:
+        - '3306:3306'
+  backend-challenge:
+    container_name: backend-challenge
     build:
-      context: ./fe-challenge
+      context: ./backend-challenge
+    ports:
+      - '80:80'
+    volumes:
+      - ./backend-challenge:/var/www/html
+      - ./backend-challenge/apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    depends_on:
+      - mysql
+  frontend-challenge:
+    container_name: frontend-challenge
+    build:
+      context: ./frontend-challenge
     ports:
       - "8080:8080"
     volumes:
-       - ./fe-challenge:/usr/src/app/fe-challenge
-       - /usr/src/app/fe-challenge/node_modules
+       - ./frontend-challenge:/usr/src/app/frontend-challenge
+       - /usr/src/app/frontend-challenge/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+volumes:
+  full-stack-challenge-data:
