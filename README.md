@@ -1,4 +1,4 @@
-# Goparity Full Stack Coding Challenge
+# Full Stack Coding Challenge
 
 ## Description 📘
 
