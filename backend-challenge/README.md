@@ -1,7 +1,7 @@
-# Goparity Challenge
+# Backend Challenge
 
 Hello developer! Thank you for taking the time to try out this challenge.
-This is the repository of a fictional (and very simplified) Goparity. A few things you should know before you start
+This is the repository of a fictional (and very simplified) platform. A few things you should know before you start
 
 ### User
 
@@ -32,7 +32,7 @@ This is going to be an API that will integrate with the frontend part of your ch
 
 Before starting the challenge please familiarize yourself with the source code as much as possible.
 You should start with the backend part of the challenge before moving to the frontend part.
-Duplicate the .env.example as .env and make sure you have all the necessary configurations to create a mySQL database - goparity can be a good name 😉
+Duplicate the .env.example as .env and make sure you have all the necessary configurations to create a mySQL database
 (please also make sure you check the config files).
 
 Install the dependencies
